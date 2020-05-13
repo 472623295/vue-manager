@@ -1,10 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router/index.js'
-
 // 导入全局样式
 import './assets/global.less'
-
+import 'babel-polyfill'
 import './plugins/element.js'
 // 导入element-ui的样式
 import 'element-ui/lib/theme-chalk/index.css'
@@ -17,7 +16,11 @@ axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
 // 为了和vue练习所以放到原型对象上
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
-
+// 设置请求头授权API
+axios.interceptors.request.use(config => {
+  config.headers.Authorization = window.sessionStorage.getItem('token')
+  return config
+})
 new Vue({
   router,
   render: h => h(App)

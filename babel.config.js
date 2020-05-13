@@ -1,7 +1,7 @@
 module.exports = {
   presets: [
     [
-      'es2015',
+      '@babel/preset-env',
       {
         modules: false
       }
@@ -15,12 +15,15 @@ module.exports = {
         styleLibraryName: 'theme-chalk'
       }
     ],
-    [
-      'component',
-      {
-        libraryName: 'element-ui',
-        styleLibraryName: 'theme-chalk'
-      }
-    ]
+    
+// [
+//   "transform-runtime",
+//   {
+//     "helpers": false,
+//     "polyfill": false,
+//     "regenerator": true,
+//     "moduleName": "babel-runtime"
+//   }
+// ]
   ]
 }
